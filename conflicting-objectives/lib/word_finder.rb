@@ -1,8 +1,6 @@
 require "dictionary"
 
-# Public class
-#
-# WordFinder class presents the interface for perfoming generated words lookup.
+# Public: WordFinder class presents the interface for perfoming generated words lookup.
 
 class WordFinder
   attr_reader :dictionary, :result, :full_words

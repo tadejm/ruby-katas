@@ -1,8 +1,6 @@
 require "set"
 
-# Public class
-#
-# Dictionary is a set of words generated from provided (required)
+# Public: Dictionary is a set of words generated from provided (required)
 # text file.
 
 class Dictionary
