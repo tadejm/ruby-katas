@@ -1,3 +1,5 @@
+require "set"
+
 # Public class
 #
 # Dictionary is a set of words generated from provided (required)
