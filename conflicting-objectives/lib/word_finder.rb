@@ -1,26 +1,22 @@
 require "dictionary"
-require "forwardable"
 
 # Public class
 #
 # WordFinder class presents the interface for perfoming generated words lookup.
 
 class WordFinder
-  attr_reader :dictionary, :result
+  attr_reader :dictionary, :result, :full_words
 
-  extend Forwardable
-
-  def_delegators :dictionary, :words
 
   def initialize dictionary
     @dictionary = Dictionary.new dictionary
-    @result = []
+    @result, @full_words = [], []
   end
 
   def find
     generate.map do |phase|
       word = phase.join('')
-      if words.include?(word)
+      if full_words.include?(word)
         puts "#{phase.first} + #{phase.last} = #{word}"
         result << word
       end
@@ -39,11 +35,12 @@ class WordFinder
   def split
     two, three, four = [], [], []
 
-    for word in words
+    for word in dictionary.words
       case word.size
       when 2 then two << word
       when 3 then three << word
       when 4 then four << word
+      when 6 then @full_words << word
       end
     end
     return [two, three, four]
